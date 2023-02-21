@@ -48,6 +48,40 @@ public static class Program
     
     return k;
   }
+
+  static bool doesFileExist(string fileName)
+  {
+    if (!File.Exists(fileName))
+    {
+      Console.WriteLine($"Error. File {fileName} does not exist");
+      return false;
+    }
+
+    return true;
+  }
+
+  static bool isFileEmpty(string? line, string fileName)
+  {
+    if (line == null)
+    {
+      Console.WriteLine($"file {fileName} is empty.");
+      return false;
+    }
+
+    return true;
+  }
+
+  static bool isFileFormatValid(string[] splitedLine)
+  {
+    if (splitedLine.Length != 3)
+    {
+      Console.WriteLine("invalid file format");
+      return false;
+    }
+
+    return true;
+  }
+
   static void Main(string[] args)
   {
     CultureInfo culture = new CultureInfo(CultureInfo.CurrentCulture.Name);
