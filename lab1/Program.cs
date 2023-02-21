@@ -38,15 +38,32 @@ public static class Program
     return false;
   }
 
+  static float[] ReadThreeNumbersFromFile(string fileName)
+  {
+    float[] numbers = new float[3];
+
+    using (StreamReader reader = new StreamReader(fileName))
+    {
+      string? line = reader.ReadLine();
+      if (!isFileEmpty(line, fileName)) return new float[0];
+
+      string[] splitedLine = (line != null) ? line.Split(' ') : new string[0];
+      if (!isFileFormatValid(splitedLine)) return new float[0];
+
+      for (int i = 0; i < splitedLine.Length; i++)
       {
-          Console.WriteLine("Not a valid float. Try again");
-          k = GetInputFloat(name);
+        if (!float.TryParse(splitedLine[i], out numbers[i]))
+        {
+          Console.WriteLine($"Error. Found invalid value {splitedLine[i]}.");
+          return new float[0];
+        }
       }
-      else {
-          Console.WriteLine($"You set {name} = {k}");
-      }
-    
-    return k;
+    }
+
+    if (IsAZero(numbers[0])) return new float[0];
+
+    Console.WriteLine($"The three floats are: {numbers[0]}, {numbers[1]}, {numbers[2]}");
+    return numbers;
   }
 
   static bool doesFileExist(string fileName)
@@ -98,7 +115,14 @@ public static class Program
     }
     else
     {
-      
+      if (!doesFileExist(args[0])) return;
+
+      float[] numbers = ReadThreeNumbersFromFile(args[0]);
+
+      if (numbers.Length == 0) return;
+      a = numbers[0];
+      b = numbers[1];
+      c = numbers[2];
     }
   }
 }
