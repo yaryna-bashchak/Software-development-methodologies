@@ -9,8 +9,13 @@ public static class Program
   {
     float k;
     Console.Write($"{name} = ");
+    string? input = Console.ReadLine();
 
-    if (!float.TryParse(Console.ReadLine(), out k))
+    if (!tryParseFloat(input, out k) || (name == 'a' && IsAZero(k))) GetInputFloat(name);
+
+    return k;
+  }
+
   static bool tryParseFloat(string? input, out float k)
   {
     if (!float.TryParse(input, out k))
