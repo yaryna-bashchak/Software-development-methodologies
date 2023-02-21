@@ -11,7 +11,7 @@ public static class Program
     Console.Write($"{name} = ");
     string? input = Console.ReadLine();
 
-    if (!tryParseFloat(input, out k) || (name == 'a' && IsAZero(k))) GetInputFloat(name);
+    if (!tryParseFloat(input, out k) || (name == 'a' && IsAZero(k))) k = GetInputFloat(name);
 
     return k;
   }
@@ -62,7 +62,6 @@ public static class Program
 
     if (IsAZero(numbers[0])) return new float[0];
 
-    Console.WriteLine($"The three floats are: {numbers[0]}, {numbers[1]}, {numbers[2]}");
     return numbers;
   }
 
