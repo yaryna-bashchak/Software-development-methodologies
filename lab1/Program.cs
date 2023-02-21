@@ -118,11 +118,15 @@ public static class Program
       if (!doesFileExist(args[0])) return;
 
       float[] numbers = ReadThreeNumbersFromFile(args[0]);
-
       if (numbers.Length == 0) return;
+
       a = numbers[0];
       b = numbers[1];
       c = numbers[2];
     }
+
+    QuadraticEquationSolver equation = new QuadraticEquationSolver(a, b, c);
+    equation.PrintEquation();
+    equation.PrintRoots();
   }
 }
