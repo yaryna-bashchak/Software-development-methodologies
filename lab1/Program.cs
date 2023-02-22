@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Runtime.CompilerServices;
 using validation;
 
 namespace QuadraticEquationSolver;
