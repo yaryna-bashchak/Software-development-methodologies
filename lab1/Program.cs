@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Runtime.CompilerServices;
+using validation;
 
 namespace QuadraticEquationSolver;
 
@@ -11,31 +12,9 @@ public static class Program
     Console.Write($"{name} = ");
     string? input = Console.ReadLine();
 
-    if (!tryParseFloat(input, out k) || (name == 'a' && IsAZero(k))) k = GetInputFloat(name);
+    if (!Validation.tryParseFloat(input, out k) || (name == 'a' && Validation.IsAZero(k))) k = GetInputFloat(name);
 
     return k;
-  }
-
-  static bool tryParseFloat(string? input, out float k)
-  {
-    if (!float.TryParse(input, out k))
-    {
-      Console.WriteLine($"Error. Expected a valid real number, got {input} instead");
-      return false;
-    }
-
-    return true;
-  }
-
-  static bool IsAZero(float a)
-  {
-    if (a == 0)
-    {
-      Console.WriteLine("Error. a cannot be 0");
-      return true;
-    }
-
-    return false;
   }
 
   static float[] ReadThreeNumbersFromFile(string fileName)
@@ -45,10 +24,10 @@ public static class Program
     using (StreamReader reader = new StreamReader(fileName))
     {
       string? line = reader.ReadLine();
-      if (!isFileEmpty(line, fileName)) return new float[0];
+      if (!Validation.isFileEmpty(line, fileName)) return new float[0];
 
       string[] splitedLine = (line != null) ? line.Split(' ') : new string[0];
-      if (!isFileFormatValid(splitedLine)) return new float[0];
+      if (!Validation.isFileFormatValid(splitedLine)) return new float[0];
 
       for (int i = 0; i < splitedLine.Length; i++)
       {
@@ -60,42 +39,9 @@ public static class Program
       }
     }
 
-    if (IsAZero(numbers[0])) return new float[0];
+    if (Validation.IsAZero(numbers[0])) return new float[0];
 
     return numbers;
-  }
-
-  static bool doesFileExist(string fileName)
-  {
-    if (!File.Exists(fileName))
-    {
-      Console.WriteLine($"Error. File {fileName} does not exist");
-      return false;
-    }
-
-    return true;
-  }
-
-  static bool isFileEmpty(string? line, string fileName)
-  {
-    if (line == null)
-    {
-      Console.WriteLine($"file {fileName} is empty.");
-      return false;
-    }
-
-    return true;
-  }
-
-  static bool isFileFormatValid(string[] splitedLine)
-  {
-    if (splitedLine.Length != 3)
-    {
-      Console.WriteLine("invalid file format");
-      return false;
-    }
-
-    return true;
   }
 
   static void Main(string[] args)
@@ -114,7 +60,7 @@ public static class Program
     }
     else
     {
-      if (!doesFileExist(args[0])) return;
+      if (!Validation.doesFileExist(args[0])) return;
 
       float[] numbers = ReadThreeNumbersFromFile(args[0]);
       if (numbers.Length == 0) return;
