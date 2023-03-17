@@ -15,12 +15,17 @@ public class ListOfChars
         count = 0;
     }
 
-    public ListOfChars(char[] items, int count)
+    public ListOfChars(char[] _items, int _count)
     {
-        this.items = items;
-        this.count = count;
+        this.items = new char[_items.Length];
+        _items.CopyTo(this.items, 0);
+        this.count = _count;
     }
 
+    public void show()
+    {
+        Console.WriteLine(items);
+    }
 
     public int length()
     {
@@ -130,6 +135,7 @@ public class ListOfChars
     public void clear()
     {
         Array.Clear(items);
+        count = 0;
     }
 
     public void extend(ListOfChars list)
