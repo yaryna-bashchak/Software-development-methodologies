@@ -9,13 +9,18 @@ public class ListOfChars
     private char[] items;
     private int count;
 
-    public ListOfChars()
+    public ListOfChars(int num = 5)
     {
-        items = new char[5];
+        items = new char[num];
         count = 0;
     }
 
+    public ListOfChars(char[] items, int count)
     {
+        this.items = items;
+        this.count = count;
+    }
+
 
     public int length()
     {
@@ -83,5 +88,16 @@ public class ListOfChars
                 delete(i);
             }
         } 
+    }
+
+    public char get(int index)
+    {
+        CheckIndex(index);
+        return items[index];
+    }
+
+    public ListOfChars clone()
+    {
+        return new ListOfChars(items, count);
     }
 }
