@@ -117,8 +117,28 @@ public class ListOfChars
         }
     }
 
+    public int findFirst(char item)
+    {
+        return Array.IndexOf(items, item);
+    }
+
+    public int findLast(char item)
+    {
+        return Array.LastIndexOf(items, item);
+    }
+
     public void clear()
     {
         Array.Clear(items);
+    }
+
+    public void extend(ListOfChars list)
+    {
+        var newArray = new char[count + list.items.Length];
+        items.CopyTo(newArray, 0);
+        list.items.CopyTo(newArray, count);
+
+        items = newArray;
+        count += list.count;
     }
 }
