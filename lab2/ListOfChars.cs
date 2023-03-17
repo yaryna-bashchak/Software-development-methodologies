@@ -100,4 +100,25 @@ public class ListOfChars
     {
         return new ListOfChars(items, count);
     }
+
+    public void reverse()
+    {
+        int i = 0;
+        int j = count - 1;
+
+        while (i < j)
+        {
+            char temp = items[i];
+            items[i] = items[j];
+            items[j] = temp;
+
+            i++;
+            j--;
+        }
+    }
+
+    public void clear()
+    {
+        Array.Clear(items);
+    }
 }
