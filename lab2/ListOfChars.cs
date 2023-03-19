@@ -34,8 +34,20 @@ public class DoublyLinkedList
 
     public void append(char item)
     {
-        CheckLength();
-        items[count] = item;
+        var node = new Node(item);
+
+        if (head == null)
+        {
+            head = node;
+            tail = node;
+        }
+        else
+        {
+            tail.next = node;
+            node.prev = tail;
+            tail = node;
+        }
+
         count++;
     }
 
@@ -47,13 +59,9 @@ public class DoublyLinkedList
         }
     }
 
-    private void CheckLength()
     {
-        if (count == items.Length)
         {
-            Array.Resize(ref items, items.Length * 2);
         }
-    }
 
     public void insert(char item, int index)
     {
