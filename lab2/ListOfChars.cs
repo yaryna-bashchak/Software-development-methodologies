@@ -59,21 +59,36 @@ public class DoublyLinkedList
         }
     }
 
-    {
-        {
-        }
-
     public void insert(char item, int index)
     {
         CheckIndex(index);
-        CheckLength();
-
-        for (int i = count; i > index; i--)
+        var node = new Node(item);
+        
+        if (index == 0)
         {
-            items[i] = items[i - 1];
+            node.next = head;
+            head.prev = node;
+            head = node;
+        }
+        else if (index == count)
+        {
+            append(item);
+        }
+        else
+        {
+            var current = head;
+
+            for (int i = 0; i < index - 1; i++)
+            {
+                current = current.next;
+            }
+
+            node.prev = current;
+            node.next = current.next;
+            current.next.prev = node;
+            current.next = node;
         }
 
-        items[index] = item;
         count++;
     }
 
