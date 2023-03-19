@@ -223,12 +223,40 @@ public class DoublyLinkedList
 
     public int findFirst(char item)
     {
-        return Array.IndexOf(items, item);
+        var current = head;
+        int index = 0;
+
+        while (current != null)
+        {
+            if (current.value == item)
+            {
+                return index;
+            }
+
+            current = current.next;
+            index++;
+        }
+
+        return -1;
     }
 
     public int findLast(char item)
     {
-        return Array.LastIndexOf(items, item);
+        var current = tail;
+        int index = count - 1;
+
+        while (current != null)
+        {
+            if (current.value == item)
+            {
+                return index;
+            }
+
+            current = current.prev;
+            index--;
+        }
+
+        return -1;
     }
 
     public void clear()
