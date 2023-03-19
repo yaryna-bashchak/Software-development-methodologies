@@ -4,7 +4,7 @@ public static class Program
 {
     static void Main(string[] args)
     {
-        var list = new ListOfChars();
+        var list = new DoublyLinkedList();
         list.append('H');
         list.append('i');
         list.append('!');

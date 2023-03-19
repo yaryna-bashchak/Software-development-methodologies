@@ -4,22 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace lab2;
-public class ListOfChars
+public class DoublyLinkedList
 {
-    private char[] items;
-    private int count;
+    private Node? head = null;
+    private Node? tail = null;
+    private int count { get; set; }
 
-    public ListOfChars(int num = 5)
+    public DoublyLinkedList()
     {
-        items = new char[num];
         count = 0;
     }
 
-    public ListOfChars(char[] _items, int _count)
+    public DoublyLinkedList(Node head, Node tail, int count)
     {
-        this.items = new char[_items.Length];
-        _items.CopyTo(this.items, 0);
-        this.count = _count;
+        this.head = head;
+        this.tail = tail;
+        this.count = count;
     }
 
     public void show()
@@ -41,7 +41,7 @@ public class ListOfChars
 
     private void CheckIndex(int index)
     {
-        if (index < 0 || index > count - 1)
+        if (index < 0 || index > count)
         {
             throw new ArgumentOutOfRangeException("index");
         }
