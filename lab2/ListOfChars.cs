@@ -107,27 +107,80 @@ public class DoublyLinkedList
     public char delete(int index)
     {
         CheckIndex(index);
-        char deletedItem = items[index];
-        count--;
 
-        for (int i = index; i < count; i++)
+        char deletedItem;
+
+        if (count == 1)
         {
-            items[i] = items[i + 1];
+            deletedItem = head.value;
+            head = null;
+            tail = null;
+        }
+        else if (index == 0)
+        {
+            deletedItem = head.value;
+            head = head.next;
+            head.prev = null;
+        }
+        else if (index == count - 1)
+        {
+            deletedItem = tail.value;
+            tail = tail.prev;
+            tail.next = null;
+        }
+        else
+        {
+            var current = head;
+
+            for (int i = 0; i < index; i++)
+            {
+                current = current.next;
+            }
+
+            deletedItem = current.value;
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
         }
 
-        items[count] = ' ';
+        count--;
         return deletedItem;
     }
 
     public void deleteAll(char item)
     {
-        for (int i = count - 1; i >= 0; i--)
+        var current = head;
+
+        while (current != null)
         {
-            if (items[i] == item)
+            if (current.value == item)
             {
-                delete(i);
+                if (current == head)
+                {
+                    head = head.next;
+                    if (head != null)
+                    {
+                        head.prev = null;
+                    }
+                }
+                else if (current == tail)
+                {
+                    tail = tail.prev;
+                    if (tail != null)
+                    {
+                        tail.next = null;
+                    }
+                }
+                else
+                {
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                }
+
+                count--;
             }
-        } 
+
+            current = current.next;
+        }
     }
 
     public char get(int index)
