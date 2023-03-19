@@ -261,17 +261,29 @@ public class DoublyLinkedList
 
     public void clear()
     {
-        Array.Clear(items);
+        head = null;
+        tail = null;
         count = 0;
     }
 
-    public void extend(ListOfChars list)
+    public void extend(DoublyLinkedList list)
     {
-        var newArray = new char[count + list.items.Length];
-        items.CopyTo(newArray, 0);
-        list.items.CopyTo(newArray, count);
+        if (list.count == 0)
+        {
+            return;
+        }
 
-        items = newArray;
-        count += list.count;
+        if (this.count == 0)
+        {
+            this.head = list.head;
+            this.tail = list.tail;
+            this.count = list.count;
+            return;
+        }
+
+        this.tail.next = list.head;
+        list.head.prev = this.tail;
+        this.tail = list.tail;
+        this.count += list.count;
     }
 }
