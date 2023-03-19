@@ -186,7 +186,14 @@ public class DoublyLinkedList
     public char get(int index)
     {
         CheckIndex(index);
-        return items[index];
+        var current = head;
+
+        for (int i = 0; i < index; i++)
+        {
+            current = current.next;
+        }
+
+        return current.value;
     }
 
     public DoublyLinkedList clone()
@@ -196,17 +203,21 @@ public class DoublyLinkedList
 
     public void reverse()
     {
-        int i = 0;
-        int j = count - 1;
+        Node? temp = null;
+        var current = head;
+        tail = head;
 
-        while (i < j)
+        while (current != null)
         {
-            char temp = items[i];
-            items[i] = items[j];
-            items[j] = temp;
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
 
-            i++;
-            j--;
+        if (temp != null)
+        {
+            head = temp.prev;
         }
     }
 
