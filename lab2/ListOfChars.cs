@@ -15,16 +15,28 @@ public class DoublyLinkedList
         count = 0;
     }
 
-    public DoublyLinkedList(Node head, Node tail, int count)
+    public DoublyLinkedList(DoublyLinkedList list)
     {
-        this.head = head;
-        this.tail = tail;
-        this.count = count;
+        var current = list.head;
+
+        while (current != null)
+        {
+            this.append(current.value);
+            current = current.next;
+        }
     }
 
     public void show()
     {
-        Console.WriteLine(items);
+        var current = head;
+
+        while (current != null)
+        {
+            Console.Write(current.value);
+            current = current.next;
+        }
+
+        Console.WriteLine();
     }
 
     public int length()
@@ -124,9 +136,9 @@ public class DoublyLinkedList
         return items[index];
     }
 
-    public ListOfChars clone()
+    public DoublyLinkedList clone()
     {
-        return new ListOfChars(items, count);
+        return new DoublyLinkedList(this);
     }
 
     public void reverse()
