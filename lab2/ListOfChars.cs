@@ -107,6 +107,10 @@ public class DoublyLinkedList
     public char delete(int index)
     {
         CheckIndex(index);
+        if (index == count)
+        {
+            throw new ArgumentOutOfRangeException("index");
+        }
 
         char deletedItem;
 
