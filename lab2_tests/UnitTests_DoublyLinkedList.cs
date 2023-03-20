@@ -4,6 +4,24 @@ namespace lab2;
 public class DoublyLinkedListTests
 {
     [Test]
+    public void CheckIndex()
+    {
+        var list = new DoublyLinkedList();
+        list.append('h');
+        list.append('e');
+        list.append('l');
+        list.append('l');
+        list.append('o');
+
+        Assert.AreEqual('o', list.get(4));
+        Assert.Throws<ArgumentOutOfRangeException>(() => list.get(5));
+        Assert.Throws<ArgumentOutOfRangeException>(() => list.get(-1));
+        Assert.Throws<ArgumentOutOfRangeException>(() => list.delete(5));       
+        Assert.Throws<ArgumentOutOfRangeException>(() => list.delete(-1));       
+        Assert.AreEqual('o', list.delete(4));
+    }
+
+    [Test]
     public void Append_Get_Length()
     {
         var list = new DoublyLinkedList();
