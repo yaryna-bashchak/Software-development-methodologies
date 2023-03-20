@@ -65,7 +65,7 @@ public class DoublyLinkedList
 
     private void CheckIndex(int index)
     {
-        if (index < 0 || index > count)
+        if (index < 0 || index > count - 1)
         {
             throw new ArgumentOutOfRangeException("index");
         }
@@ -73,7 +73,11 @@ public class DoublyLinkedList
 
     public void insert(char item, int index)
     {
-        CheckIndex(index);
+        if (!(index == count))
+        {
+            CheckIndex(index);
+        }
+
         var node = new Node(item);
         
         if (index == 0)
@@ -107,10 +111,6 @@ public class DoublyLinkedList
     public char delete(int index)
     {
         CheckIndex(index);
-        if (index == count)
-        {
-            throw new ArgumentOutOfRangeException("index");
-        }
 
         char deletedItem;
 
