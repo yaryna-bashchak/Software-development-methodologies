@@ -23,6 +23,6 @@ jobs:
       - name: Install dependencies
         run: dotnet restore ./lab2
       - name: Build
-        run: dotnet build ./lab2 --configuration Release --no-restore
+        run: dotnet build ./lab2
       - name: Test
-        run: dotnet test ./lab2_tests --no-restore --verbosity normal
+        run: dotnet test ./lab2_tests
