@@ -29,7 +29,7 @@ public class DoublyLinkedListTests
         list.append('d');
         list.append('e');
 
-        list.insert('T', 3);
+        list.insert('T', 4);
 
         Assert.AreEqual(6, list.length());
         Assert.AreEqual('T', list.get(3));
