@@ -197,4 +197,61 @@ public class DoublyLinkedListTests
         Assert.AreEqual(null, list.head);
         Assert.AreEqual(null, list.tail);
     }
+
+    [Test]
+    public void Extend_TwoFullLists()
+    {
+        var list1 = new DoublyLinkedList();
+        list1.append('h');
+        list1.append('e');
+        list1.append('l');
+        list1.append('l');
+        list1.append('o');
+
+        var list2 = new DoublyLinkedList();
+        list2.append(' ');
+        list2.append('w');
+        list2.append('o');
+        list2.append('r');
+        list2.append('l');
+        list2.append('d');
+
+        list1.extend(list2);
+
+        Assert.AreEqual(11, list1.length());
+        Assert.AreEqual('w', list1.get(6));
+        Assert.AreEqual('d', list1.get(10));
+        Assert.AreEqual('d', list1.tail.value);
+    }
+
+    [Test]
+    public void Extend_EmptyList()
+    {
+        var list1 = new DoublyLinkedList();
+        list1.append('h');
+        list1.append('e');
+        list1.append('l');
+        list1.append('l');
+        list1.append('o');
+
+        var list2 = new DoublyLinkedList();
+        var list3 = new DoublyLinkedList();
+
+        var list_full = list1.clone();
+        var list_empty = new DoublyLinkedList();
+
+        list1.extend(list_empty); // Full + Empty
+        list2.extend(list_full);  // Empty + Full
+        list3.extend(list_empty); // Empty + Empty
+
+        Assert.AreEqual(5, list1.length());
+        Assert.AreEqual(5, list2.length());
+        Assert.AreEqual(0, list3.length());
+        Assert.AreEqual('h', list1.head.value);
+        Assert.AreEqual('o', list1.tail.value);
+        Assert.AreEqual('h', list2.head.value);
+        Assert.AreEqual('o', list2.tail.value);
+        Assert.AreEqual(null, list3.head);
+        Assert.AreEqual(null, list3.tail);
+    }
 }
