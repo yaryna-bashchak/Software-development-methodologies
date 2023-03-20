@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 namespace lab2;
 public class DoublyLinkedList
 {
-    private Node? head = null;
-    private Node? tail = null;
-    private int count { get; set; }
+    public Node? head = null;
+    public Node? tail = null;
+    public int count { get; set; }
 
     public DoublyLinkedList()
     {
