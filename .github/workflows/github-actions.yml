@@ -25,4 +25,4 @@ jobs:
       - name: Build
         run: dotnet build ./lab2 --configuration Release --no-restore
       - name: Test
-        run: dotnet test ./la2_tests --no-restore --verbosity normal
+        run: dotnet test ./lab2_tests --no-restore --verbosity normal
