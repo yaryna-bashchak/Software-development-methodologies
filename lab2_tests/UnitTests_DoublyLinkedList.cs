@@ -118,4 +118,47 @@ public class DoublyLinkedListTests
         Assert.AreEqual('n', list.get(2));
         Assert.AreEqual('a', list.get(5));
     }
+
+    [Test]
+    public void Clone()
+    {
+        var list1 = new DoublyLinkedList();
+        list1.append('b');
+        list1.append('a');
+        list1.append('n');
+        list1.append('a');
+        list1.append('n');
+        list1.append('a');
+
+        var list2 = list1.clone();
+        list2.deleteAll('a');
+        list2.append('!');
+
+        Assert.AreEqual(6, list1.length());
+        Assert.AreEqual(4, list2.length());
+        Assert.AreEqual('b', list2.get(0));
+        Assert.AreEqual('a', list1.get(1));
+        Assert.AreEqual('n', list2.get(1));
+        Assert.AreEqual('n', list2.get(2));
+        Assert.AreEqual('!', list2.get(3));
+    }
+
+    [Test]
+    public void Reverse()
+    {
+        var list = new DoublyLinkedList();
+        list.append('h');
+        list.append('e');
+        list.append('l');
+        list.append('l');
+        list.append('o');
+
+        list.reverse();
+
+        Assert.AreEqual(5, list.length());
+        Assert.AreEqual('o', list.head.value);
+        Assert.AreEqual('h', list.tail.value);
+        Assert.AreEqual('l', list.get(1));
+        Assert.AreEqual('e', list.get(3));
+    }
 }
