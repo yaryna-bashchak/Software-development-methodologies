@@ -80,4 +80,42 @@ public class DoublyLinkedListTests
 
         Assert.Throws<ArgumentOutOfRangeException>(() => list.delete(5));
     }
+
+    [Test]
+    public void DeleteAll_SeveralMatches()
+    {
+        var list = new DoublyLinkedList();
+        list.append('b');
+        list.append('a');
+        list.append('n');
+        list.append('a');
+        list.append('n');
+        list.append('a');
+
+        list.deleteAll('a');
+
+        Assert.AreEqual(3, list.length());
+        Assert.AreEqual('b', list.get(0));
+        Assert.AreEqual('n', list.get(1));
+        Assert.AreEqual('n', list.get(2));
+    }
+
+    [Test]
+    public void Delete_NoMatches()
+    {
+        var list = new DoublyLinkedList();
+        list.append('b');
+        list.append('a');
+        list.append('n');
+        list.append('a');
+        list.append('n');
+        list.append('a');
+
+        list.deleteAll('c');
+
+        Assert.AreEqual(6, list.length());
+        Assert.AreEqual('b', list.get(0));
+        Assert.AreEqual('n', list.get(2));
+        Assert.AreEqual('a', list.get(5));
+    }
 }
