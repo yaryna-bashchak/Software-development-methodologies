@@ -49,4 +49,35 @@ public class DoublyLinkedListTests
 
         Assert.Throws<ArgumentOutOfRangeException>(() => list.insert('T', -1));
     }
+
+    [Test]
+    public void Delete()
+    {
+        var list = new DoublyLinkedList();
+        list.append('a');
+        list.append('b');
+        list.append('c');
+        list.append('d');
+        list.append('e');
+
+        char deletedItem = list.delete(2);
+
+        Assert.AreEqual(4, list.length());
+        Assert.AreEqual('c', deletedItem);
+        Assert.AreEqual('d', list.get(2));
+        Assert.AreEqual('e', list.get(3));
+    }
+
+    [Test]
+    public void Delete_IncorrectIndex()
+    {
+        var list = new DoublyLinkedList();
+        list.append('a');
+        list.append('b');
+        list.append('c');
+        list.append('d');
+        list.append('e');
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => list.delete(5));
+    }
 }
