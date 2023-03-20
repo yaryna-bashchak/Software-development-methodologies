@@ -161,4 +161,40 @@ public class DoublyLinkedListTests
         Assert.AreEqual('l', list.get(1));
         Assert.AreEqual('e', list.get(3));
     }
+
+    [Test]
+    public void FindFirstAndLast()
+    {
+        var list = new DoublyLinkedList();
+        list.append('b');
+        list.append('a');
+        list.append('n');
+        list.append('a');
+        list.append('n');
+        list.append('a');
+        list.append('!');
+
+        Assert.AreEqual(7, list.length());
+        Assert.AreEqual(1, list.findFirst('a'));
+        Assert.AreEqual(-1, list.findFirst('c'));
+        Assert.AreEqual(5, list.findLast('a'));
+        Assert.AreEqual(-1, list.findLast('c'));
+    }
+
+    [Test]
+    public void Clear()
+    {
+        var list = new DoublyLinkedList();
+        list.append('a');
+        list.append('b');
+        list.append('c');
+        list.append('d');
+        list.append('e');
+
+        list.clear();
+
+        Assert.AreEqual(0, list.length());
+        Assert.AreEqual(null, list.head);
+        Assert.AreEqual(null, list.tail);
+    }
 }
