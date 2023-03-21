@@ -74,12 +74,45 @@ So my task is next:
 
 ![image](https://user-images.githubusercontent.com/90560209/226444825-9aa89d43-02e3-45d1-9e1e-f62dc54e556b.png)
 
-
-- or next if you want to **run tests**
+- or next if you want to **run tests** (if you have trobles with running the tests do steps below)
 
 <code>$ dotnet test ./lab2_tests</code>
 
 ![image](https://user-images.githubusercontent.com/90560209/226453968-96e77690-379b-425e-ab0f-cb21a982a3dc.png)
+
+#### If you have errors when running the tests, it's probably because you don't have the NUnit packages installed.
+
+Follow the next steps:
+
+- install _NuGet Gallery_ extention (if you do not already have it)
+
+<img src="https://user-images.githubusercontent.com/90560209/226548216-92ceeca0-8f9a-4e59-a023-e5f2713fe34b.png" height="80">
+
+- open NuGet Gallery
+
+![image](https://user-images.githubusercontent.com/90560209/226548521-a836523e-d625-4046-89d5-ee967a23aa14.png)
+
+- find and install next 4 packages (choose install only for **lab2_tests.csproj**)
+
+Microsoft.NET.Test.Sdk
+
+<img src="https://user-images.githubusercontent.com/90560209/226549915-451e98c4-5ad7-4f0d-bf81-af73be8b0d06.png" height="150"> <img src="https://user-images.githubusercontent.com/90560209/226549405-1732dcdd-67c8-4b10-abcb-2987bc097b84.png" height="150">
+
+NUnit
+
+<img src="https://user-images.githubusercontent.com/90560209/226549367-db191e82-aeb9-4a6b-a367-799df4bbeb8b.png" height="150"> <img src="https://user-images.githubusercontent.com/90560209/226549385-1a788edf-1b63-4f34-91a3-8bb412ee1e60.png" height="150">
+
+NUnit3TestAdapter
+
+<img src="https://user-images.githubusercontent.com/90560209/226550092-58844f05-8d9f-4719-b7ff-e172f19f2fae.png" height="150"> <img src="https://user-images.githubusercontent.com/90560209/226550098-ad62ab22-8af2-4744-aafa-67cec4a3d7dd.png" height="150">
+
+NUnit.Analyzers
+
+<img src="https://user-images.githubusercontent.com/90560209/226550189-a8e1ab6d-2ccd-489f-a5a4-f697e0f9f709.png" height="150"> <img src="https://user-images.githubusercontent.com/90560209/226550201-536c8bfc-b97f-4855-84c0-7cd1bdf12b3d.png" height="150">
+
+- try to run tests again by command
+
+<code>$ dotnet test ./lab2_tests</code>
 
 ---
 
