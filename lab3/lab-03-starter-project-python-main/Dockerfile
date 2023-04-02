@@ -1,5 +1,7 @@
 FROM python:3.11.2-alpine
 
+RUN apk add --no-cache g++ gcc libxslt-dev
+
 WORKDIR /app
 
 COPY requirements/backend.in .
