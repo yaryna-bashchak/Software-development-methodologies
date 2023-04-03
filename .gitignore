@@ -101,6 +101,7 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+lab3/dotnet/out/
 
 # Chutzpah Test files
 _Chutzpah*
