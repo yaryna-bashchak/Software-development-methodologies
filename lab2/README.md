@@ -63,8 +63,8 @@ So my task is next:
 ### How to run
 - first of all, you need to install [.Net 7.0](https://dotnet.microsoft.com/en-us/download) (if you do not already have it)
 - open previous **folder "Software-development-methodologies"** (that contains folders: lab2 and lab2_tests) in [VS Code](https://code.visualstudio.com/download)
-- install _C# extension_ (if you do not already have it)
-<img src="https://user-images.githubusercontent.com/90560209/220602921-cdde3e17-3c4b-458c-bfd0-d0bf2fdd2529.png" height="80">
+- run the following command to install all needed packages
+<code>$ dotnet restore</code>
 
 - write next commands in Terminal if you want to **run the program**
 
@@ -80,7 +80,7 @@ So my task is next:
 
 ![image](https://user-images.githubusercontent.com/90560209/226453968-96e77690-379b-425e-ab0f-cb21a982a3dc.png)
 
-#### If you have errors when running the tests, it's probably because you don't have the NUnit packages installed.
+#### If you have errors when running the tests, it's probably because you don't have the NUnit packages installed (even after restore).
 
 Follow the next steps:
 
